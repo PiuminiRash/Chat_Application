@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" prefHeight="650.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.SingInController">
+    <children>
+        <TextField fx:id="txtUserName" layoutX="106.0" layoutY="225.0" prefHeight="31.0" prefWidth="229.0" promptText="User Name" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+        <TextField fx:id="txtMail" layoutX="50.0" layoutY="348.0" prefHeight="31.0" prefWidth="300.0" promptText="Email" />
+        <JFXButton layoutX="97.0" layoutY="439.0" onAction="#btnSingInOnAction" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: yellow; -fx-background-radius: 12px;" text="Sing In" />
+        <PasswordField fx:id="txtPassword" layoutX="50.0" layoutY="281.0" prefHeight="31.0" prefWidth="300.0" promptText="Password" />
+      <Hyperlink layoutX="220.0" layoutY="311.0" onAction="#linkForgotPassword" text="Forgot Password ?" />
+    </children>
+</AnchorPane>
