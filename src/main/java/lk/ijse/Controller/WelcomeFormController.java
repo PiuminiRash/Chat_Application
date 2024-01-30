@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.Server.Server;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,11 +24,21 @@ public class WelcomeFormController implements Initializable {
 
     @FXML
     void btnSingInOnAction(ActionEvent event) throws IOException {
-        root.getChildren().clear();
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/massage_form.fxml"))));
-        stage.setTitle("Sign In Form");
-        stage.show();
+        try {
+            Server server = Server.getServerSocket();
+            Thread thread = new Thread(server);
+            thread.start();
+
+            root.getChildren().clear();
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/singin_form.fxml"))));
+            stage.show();
+            stage.setOnCloseRequest(e-> {
+                System.exit(0);
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
