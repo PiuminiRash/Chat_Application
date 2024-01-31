@@ -41,12 +41,12 @@ public class WelcomeFormController implements Initializable {
         }
     }
 
-    @FXML
-    void btnSingUpOnAction(ActionEvent event) throws IOException {
-        root.getChildren().clear();
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/singup_form.fxml"))));
-        stage.setTitle("Sign Up Form");
-        stage.show();
-    }
+//    @FXML
+//    void btnSingUpOnAction(ActionEvent event) throws IOException {
+//        root.getChildren().clear();
+//        Stage stage = (Stage) root.getScene().getWindow();
+//        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/singup_form.fxml"))));
+//        stage.setTitle("Sign Up Form");
+//        stage.show();
+//    }
 }

@@ -31,7 +31,6 @@ public class SingInController implements Initializable {
     @FXML
     private PasswordField txtPassword;
 
-    static  String name;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
