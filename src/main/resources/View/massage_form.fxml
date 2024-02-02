@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -12,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #f6e58d;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.MassageFormController">
    <children>
@@ -26,18 +24,24 @@
             <VBox fx:id="vBox" prefHeight="503.0" prefWidth="373.0" />
          </content>
       </ScrollPane>
-      <TextField fx:id="txtMsg" focusTraversable="false" layoutX="14.0" layoutY="593.0" onAction="#txtMsgOnAction" prefHeight="37.0" prefWidth="261.0" promptText="Enter your message here" style="-fx-background-color: white;" />
-      <Pane layoutX="278.0" layoutY="594.0" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: white;">
+      <TextField fx:id="txtMsg" focusTraversable="false" layoutX="14.0" layoutY="593.0" onAction="#txtMsgOnAction" prefHeight="37.0" prefWidth="243.0" promptText="Enter your message here" style="-fx-background-color: white;" />
+      <Pane layoutX="264.0" layoutY="594.0" prefHeight="35.0" prefWidth="122.0" style="-fx-background-color: white;">
          <children>
-            <JFXButton onAction="#emojiButtonOnAction" text=" ">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../Assest/emoji.jpeg" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
+            <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="-1.0" layoutY="-3.0" onMouseClicked="#emojiButtonOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assest/wink_9150450.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="40.0" layoutY="-3.0" onMouseClicked="#imageButtonOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assest/camera_12745853.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="81.0" onDragDetected="#sentButtonOnAction" onMouseClicked="#sentButtonOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assest/send_8801454.png" />
+               </image>
+            </ImageView>
          </children></Pane>
       <AnchorPane fx:id="emojiAnchorPane" layoutX="88.0" layoutY="423.0" prefHeight="170.0" prefWidth="250.0">
          <children>
@@ -58,15 +62,11 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <Label layoutX="98.0" layoutY="26.0" text="User Name">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="37.0" fitWidth="41.0" layoutX="345.0" layoutY="18.0" pickOnBounds="true">
          <image>
             <Image url="@../Assest/setting-removebg-preview.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblName" layoutX="101.0" layoutY="26.0" />
    </children>
 </AnchorPane>

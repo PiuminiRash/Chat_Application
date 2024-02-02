@@ -11,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -30,6 +31,9 @@ import java.util.ResourceBundle;
 
 public class MassageFormController implements Initializable {
     @FXML
+    private Label lblName;
+
+    @FXML
     private AnchorPane root;
 
     @FXML
@@ -46,9 +50,6 @@ public class MassageFormController implements Initializable {
 
     @FXML
     private GridPane emojiGridPane;
-
-    @FXML
-    private Label lblName;
 
     BufferedReader reader;
 
@@ -97,7 +98,7 @@ public class MassageFormController implements Initializable {
             for (int column = 0; column < 4; column++) {
                 if (buttonIndex2 < emojis.length) {
                     String emoji = emojis[buttonIndex2];
-                    Text emojiText = createEmojiText(emoji);
+                    JFXButton emojiText = createEmojiButton(emoji);
                     emojiGridPane.add(emojiText, column, row);
                     buttonIndex2++;
                 } else {
@@ -105,14 +106,6 @@ public class MassageFormController implements Initializable {
                 }
             }
         }
-    }
-
-    private Text createEmojiText(String emoji) {
-        Text emojiText = new Text(emoji);
-        emojiText.getStyleClass().add("emoji-text");
-        emojiText.setFill(Color.web("#FFD700")); // Set your desired color
-        emojiText.setStyle("-fx-font-size: 15;");
-        return emojiText;
     }
 
     private JFXButton createEmojiButton(String emoji) {
@@ -126,8 +119,12 @@ public class MassageFormController implements Initializable {
         return button;
     }
 
+    public void setUserName(String name) {
+        lblName.setText(name);
+    }
+
     @FXML
-    void emojiButtonOnAction(ActionEvent event) {
+    void emojiButtonOnAction(MouseEvent event) {
         emojiAnchorPane.setVisible(!emojiAnchorPane.isVisible());
     }
 
@@ -155,17 +152,9 @@ public class MassageFormController implements Initializable {
         hBox.getChildren().add(messageLbl);
         vBox.getChildren().add(hBox);
         new Thread(() -> {
-           // playSound("media/messageSend.mp3");
+            //playSound("media/messageSend.mp3");
         }).start();
     }
-
-//    private void playSound(String sound) {
-//        try {
-//            new Player(new BufferedInputStream(getClass().getClassLoader().getResourceAsStream(sound))).play();
-//        } catch (JavaLayerException e) {
-//            new Alert(Alert.AlertType.ERROR, "Audio not available").show();
-//        }
-//    }
 
     public void setClient(Client client) {
         this.client = client;
@@ -184,7 +173,7 @@ public class MassageFormController implements Initializable {
 
     }
 
-    public void imageOnAction(ActionEvent actionEvent) {
+    public void imageButtonOnAction(MouseEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image File");
         FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg");
@@ -196,7 +185,6 @@ public class MassageFormController implements Initializable {
                 HBox hBox = new HBox();
                 hBox.setStyle("-fx-fill-height: true; -fx-min-height: 50; -fx-pref-width: 520; -fx-max-width: 520; -fx-padding: 10; -fx-alignment: center-right;");
 
-                // Display the image in an ImageView or any other UI component
                 ImageView imageView = new ImageView(new Image(new FileInputStream(selectedFile)));
                 imageView.setStyle("-fx-padding: 10px;");
                 imageView.setFitHeight(180);
@@ -233,5 +221,20 @@ public class MassageFormController implements Initializable {
     private void emojiButtonAction(ActionEvent event) {
         JFXButton button = (JFXButton) event.getSource();
         txtMsg.appendText(button.getText());
+    }
+
+    public void sentButtonOnAction(MouseEvent mouseEvent) {
+        try {
+            String text = txtMsg.getText();
+            if (text != null) {
+                appendText(text);
+                client.sendMessage(text);
+                txtMsg.clear();
+            } else {
+                new Alert(Alert.AlertType.INFORMATION, "message is empty").show();
+            }
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Something went wrong : server down").show();
+        }
     }
 }

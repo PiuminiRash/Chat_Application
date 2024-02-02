@@ -9,7 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.Model.ClientModel;
 import lk.ijse.Server.ClientTo;
 import lk.ijse.Util.Client;
 
@@ -41,6 +40,7 @@ public class SingInController implements Initializable {
         try {
             if (Pattern.matches("^[a-zA-Z\\s]+", txtUserName.getText())) {
                 Client client = new Client(txtUserName.getText());
+
 
                 Thread thread = new Thread(client);
                 thread.start();
