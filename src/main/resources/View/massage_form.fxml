@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -26,7 +27,18 @@
          </content>
       </ScrollPane>
       <TextField fx:id="txtMsg" focusTraversable="false" layoutX="14.0" layoutY="593.0" onAction="#txtMsgOnAction" prefHeight="37.0" prefWidth="261.0" promptText="Enter your message here" style="-fx-background-color: white;" />
-      <Pane layoutX="278.0" layoutY="594.0" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: white;" />
+      <Pane layoutX="278.0" layoutY="594.0" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: white;">
+         <children>
+            <JFXButton onAction="#emojiButtonOnAction" text=" ">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Assest/emoji.jpeg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children></Pane>
       <AnchorPane fx:id="emojiAnchorPane" layoutX="88.0" layoutY="423.0" prefHeight="170.0" prefWidth="250.0">
          <children>
             <GridPane fx:id="emojiGridPane" layoutX="-2.0" prefHeight="170.0" prefWidth="250.0">

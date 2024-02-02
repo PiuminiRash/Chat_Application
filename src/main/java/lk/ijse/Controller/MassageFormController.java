@@ -15,6 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lk.ijse.Util.Client;
@@ -87,27 +89,30 @@ public class MassageFormController implements Initializable {
             "\uD83D\uDE13"  // 😓
     };
 
-    @FXML
-    private AnchorPane emojiAnchorpane;
-
-    @FXML
-    private GridPane emojiGridpane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        emojiAnchorpane.setVisible(false);
-//        int buttonIndex = 0;
-//        for (int row = 0; row < 4; row++) {
-//            for (int column = 0; column < 4; column++) {
-//                if (buttonIndex < emojis.length) {
-//                    String emoji = emojis[buttonIndex];
-//                    JFXButton emojiButton = createEmojiButton(emoji);
-//                    emojiGridpane.add(emojiButton, column, row);
-//                    buttonIndex++;
-//                } else {
-//                    break;
-//                }
-//            }
-//        }
+        emojiAnchorPane.setVisible(false);
+        int buttonIndex2 = 0;
+        for (int row = 0; row < 4; row++) {
+            for (int column = 0; column < 4; column++) {
+                if (buttonIndex2 < emojis.length) {
+                    String emoji = emojis[buttonIndex2];
+                    Text emojiText = createEmojiText(emoji);
+                    emojiGridPane.add(emojiText, column, row);
+                    buttonIndex2++;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    private Text createEmojiText(String emoji) {
+        Text emojiText = new Text(emoji);
+        emojiText.getStyleClass().add("emoji-text");
+        emojiText.setFill(Color.web("#FFD700")); // Set your desired color
+        emojiText.setStyle("-fx-font-size: 15;");
+        return emojiText;
     }
 
     private JFXButton createEmojiButton(String emoji) {
@@ -122,8 +127,8 @@ public class MassageFormController implements Initializable {
     }
 
     @FXML
-    void btnEmojiOnAction(ActionEvent event) {
-        emojiAnchorpane.setVisible(!emojiAnchorpane.isVisible());
+    void emojiButtonOnAction(ActionEvent event) {
+        emojiAnchorPane.setVisible(!emojiAnchorPane.isVisible());
     }
 
     @FXML

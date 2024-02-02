@@ -15,7 +15,7 @@
          </image>
       </ImageView>
         <TextField fx:id="txtUserName" layoutX="47.0" layoutY="377.0" prefHeight="31.0" prefWidth="307.0" promptText="User Name" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="46.0" />
-        <JFXButton layoutX="68.0" layoutY="444.0" onAction="#btnSingInOnAction" prefHeight="31.0" prefWidth="247.0" style="-fx-background-color: yellow; -fx-background-radius: 15;" text="Join Chat">
+        <JFXButton id="button" layoutX="68.0" layoutY="467.0" onAction="#btnSingInOnAction" prefHeight="31.0" prefWidth="247.0" stylesheets="@../Style/Button.css" text="Join Chat">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>

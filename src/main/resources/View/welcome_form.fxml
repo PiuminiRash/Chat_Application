@@ -14,7 +14,7 @@
             <Image url="@../Assest/Untitled_design__4_-removebg-preview.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="93.0" layoutY="523.0" onAction="#btnSingInOnAction" prefHeight="47.0" prefWidth="214.0" style="-fx-background-color: #f1c40f; -fx-background-radius: 15;" text="Start Server">
+      <JFXButton id="button" layoutX="93.0" layoutY="523.0" onAction="#btnSingInOnAction" prefHeight="47.0" prefWidth="214.0" stylesheets="@../Style/Button.css" text="Start Server">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
