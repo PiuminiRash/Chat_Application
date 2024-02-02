@@ -30,6 +30,7 @@ public class SingInController implements Initializable {
     @FXML
     private PasswordField txtPassword;
 
+    MassageFormController massageFormController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,6 +42,8 @@ public class SingInController implements Initializable {
             if (Pattern.matches("^[a-zA-Z\\s]+", txtUserName.getText())) {
                 Client client = new Client(txtUserName.getText());
 
+                String name = txtUserName.getText();
+                massageFormController.setUserName(name);
 
                 Thread thread = new Thread(client);
                 thread.start();
