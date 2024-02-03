@@ -117,10 +117,6 @@ public class MassageFormController implements Initializable {
         return button;
     }
 
-    public void setUserName(String name) {
-        lblName.setText(name);
-    }
-
     @FXML
     void emojiButtonOnAction(MouseEvent event) {
         emojiAnchorPane.setVisible(!emojiAnchorPane.isVisible());

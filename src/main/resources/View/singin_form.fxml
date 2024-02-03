@@ -14,7 +14,7 @@
             <Image url="@../Assest/Untitled_design__4_-removebg-preview.png" />
          </image>
       </ImageView>
-        <TextField fx:id="txtUserName" layoutX="47.0" layoutY="377.0" prefHeight="31.0" prefWidth="307.0" promptText="User Name" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="46.0" />
+        <TextField fx:id="txtUserName" layoutX="68.0" layoutY="377.0" prefHeight="31.0" prefWidth="247.0" promptText="User Name" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="85.0" />
         <JFXButton id="button" layoutX="68.0" layoutY="467.0" onAction="#btnSingInOnAction" prefHeight="31.0" prefWidth="247.0" stylesheets="@../Style/Button.css" text="Join Chat">
          <font>
             <Font name="System Bold" size="15.0" />

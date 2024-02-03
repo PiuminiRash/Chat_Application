@@ -2,14 +2,10 @@ package lk.ijse.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import lk.ijse.Server.ClientTo;
 import lk.ijse.Util.Client;
 
 import java.io.IOException;
@@ -24,14 +20,6 @@ public class SingInController implements Initializable {
     @FXML
     private TextField txtUserName;
 
-    @FXML
-    private TextField txtMail;
-
-    @FXML
-    private PasswordField txtPassword;
-
-    MassageFormController massageFormController;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -42,9 +30,6 @@ public class SingInController implements Initializable {
             if (Pattern.matches("^[a-zA-Z\\s]+", txtUserName.getText())) {
                 Client client = new Client(txtUserName.getText());
 
-                String name = txtUserName.getText();
-                massageFormController.setUserName(name);
-
                 Thread thread = new Thread(client);
                 thread.start();
 
@@ -52,10 +37,5 @@ public class SingInController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void linkForgotPassword(ActionEvent event) {
-
     }
 }
