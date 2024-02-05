@@ -3,7 +3,6 @@ package lk.ijse.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.Util.Client;
@@ -25,7 +24,7 @@ public class SingInController implements Initializable {
     }
 
     @FXML
-    void btnSingInOnAction(ActionEvent event) throws IOException {
+    void btnSingInOnAction(ActionEvent event) {
         try {
             if (Pattern.matches("^[a-zA-Z\\s]+", txtUserName.getText())) {
                 Client client = new Client(txtUserName.getText());

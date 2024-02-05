@@ -33,8 +33,8 @@ public class Handler implements Runnable {
                 } else {
                     for (Handler handler : clientHandlerList) {
 
-                        System.out.println(handler.clientName);
-                        System.out.println(clientName);
+                        //System.out.println(handler.clientName);
+                        //System.out.println(clientName);
                         if (!handler.clientName.equals(clientName)) {
                             handler.sendMessage(clientName, message);
                         }

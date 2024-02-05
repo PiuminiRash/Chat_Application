@@ -3,7 +3,6 @@ package lk.ijse.Util;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import lk.ijse.Controller.MassageFormController;
 
@@ -55,7 +54,7 @@ public class Client implements Runnable, Serializable {
             }
         });
 
-        new Alert(Alert.AlertType.INFORMATION, "Server connected").show();
+        //new Alert(Alert.AlertType.INFORMATION, "Server connected").show();
 
         stage.setOnCloseRequest(event -> {
             try {

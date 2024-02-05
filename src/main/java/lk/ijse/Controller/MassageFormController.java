@@ -12,19 +12,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lk.ijse.Util.Client;
 
 import java.io.*;
-import java.net.Socket;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ResourceBundle;
+
+import static com.sun.javafx.scene.control.skin.Utils.computeTextWidth;
 
 
 public class MassageFormController implements Initializable {
@@ -35,7 +36,7 @@ public class MassageFormController implements Initializable {
     private AnchorPane root;
 
     @FXML
-    private ScrollPane scrollPanne;
+    private ScrollPane scrollPane;
 
     @FXML
     private VBox vBox;
@@ -49,21 +50,7 @@ public class MassageFormController implements Initializable {
     @FXML
     private GridPane emojiGridPane;
 
-    BufferedReader reader;
-
-    PrintWriter writer;
-
     private Client client;
-
-    Socket socket;
-
-    private FileChooser fileChooser;
-
-    private File filePath;
-
-    BufferedReader bufferedReader;
-
-    PrintWriter printWriter;
 
     private final String[] emojis = {
             "\uD83D\uDE00", // 😀
@@ -113,7 +100,7 @@ public class MassageFormController implements Initializable {
         button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         GridPane.setFillWidth(button, true);
         GridPane.setFillHeight(button, true);
-        button.setStyle("-fx-font-size: 15; -fx-text-fill: black; -fx-background-color: #F0F0F0; -fx-border-radius: 50");
+        button.setStyle("-fx-font-size: 15; -fx-text-fill: E9B824; -fx-background-color:black; -fx-border-radius: 50");
         return button;
     }
 
@@ -142,7 +129,7 @@ public class MassageFormController implements Initializable {
         HBox hBox = new HBox();
         hBox.setStyle("-fx-alignment: center-right;-fx-fill-height: true;-fx-min-height: 50;-fx-pref-width: 520;-fx-max-width: 520;-fx-padding: 10");
         Label messageLbl = new Label(text);
-        messageLbl.setStyle("-fx-background-color:  #008011;-fx-background-radius:15;-fx-font-size: 18;-fx-font-weight: normal;-fx-text-fill: white;-fx-wrap-text: true;-fx-alignment: center-left;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
+        messageLbl.setStyle("-fx-background-color:  E9B824;-fx-background-radius:15;-fx-font-size: 18;-fx-font-weight: normal;-fx-text-fill: black;-fx-wrap-text: true;-fx-alignment: center-left;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
         hBox.getChildren().add(messageLbl);
         vBox.getChildren().add(hBox);
         new Thread(() -> {
@@ -158,7 +145,7 @@ public class MassageFormController implements Initializable {
         HBox hBox = new HBox();
         hBox.setStyle("-fx-alignment: center-left;-fx-fill-height: true;-fx-min-height: 50;-fx-pref-width: 520;-fx-max-width: 520;-fx-padding: 10");
         Label messageLbl = new Label(message);
-        messageLbl.setStyle("-fx-background-color:   #2980b9;-fx-background-radius:15;-fx-font-size: 18;-fx-font-weight: normal;-fx-text-fill: white;-fx-wrap-text: true;-fx-alignment: center-left;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
+        messageLbl.setStyle("-fx-background-color: E9B824;-fx-background-radius:15;-fx-font-size: 18;-fx-font-weight: normal;-fx-text-fill: black;-fx-wrap-text: true;-fx-alignment: center-left;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
         hBox.getChildren().add(messageLbl);
         Platform.runLater(() -> {
 
@@ -197,7 +184,7 @@ public class MassageFormController implements Initializable {
     public void setImage(byte[] bytes, String sender) {
         HBox hBox = new HBox();
         Label messageLbl = new Label(sender);
-        messageLbl.setStyle("-fx-background-color:   #2980b9;-fx-background-radius:15;-fx-font-size: 18;-fx-font-weight: normal;-fx-text-fill: white;-fx-wrap-text: true;-fx-alignment: center;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
+        messageLbl.setStyle("-fx-background-color: E9B824;-fx-background-radius:15;-fx-font-size: 18;-fx-font-weight: normal;-fx-text-fill: white;-fx-wrap-text: true;-fx-alignment: center;-fx-content-display: left;-fx-padding: 10;-fx-max-width: 350;");
 
         hBox.setStyle("-fx-fill-height: true; -fx-min-height: 50; -fx-pref-width: 520; -fx-max-width: 520; -fx-padding: 10; " + (sender.equals(client.getName()) ? "-fx-alignment: center-right;" : "-fx-alignment: center-left;"));
         Platform.runLater(() -> {

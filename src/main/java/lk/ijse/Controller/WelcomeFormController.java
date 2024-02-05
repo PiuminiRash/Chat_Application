@@ -23,7 +23,7 @@ public class WelcomeFormController implements Initializable {
     }
 
     @FXML
-    void btnSingInOnAction(ActionEvent event) throws IOException {
+    void btnSingInOnAction(ActionEvent event){
         try {
             Server server = Server.getServerSocket();
             Thread thread = new Thread(server);
@@ -40,13 +40,4 @@ public class WelcomeFormController implements Initializable {
             e.printStackTrace();
         }
     }
-
-//    @FXML
-//    void btnSingUpOnAction(ActionEvent event) throws IOException {
-//        root.getChildren().clear();
-//        Stage stage = (Stage) root.getScene().getWindow();
-//        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/singup_form.fxml"))));
-//        stage.setTitle("Sign Up Form");
-//        stage.show();
-//    }
 }

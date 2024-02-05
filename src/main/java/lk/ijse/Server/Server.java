@@ -13,7 +13,7 @@ public class Server implements Runnable{
 
     private Server() throws IOException {
         serverSocket = new ServerSocket(3200);
-        System.out.println("Server Started");
+        //System.out.println("Server Started");
     }
     public static Server getServerSocket() throws IOException {
         return server == null ? server = new Server() : server;
@@ -22,7 +22,7 @@ public class Server implements Runnable{
     @Override
     public void run() {
         while (!serverSocket.isClosed()) {
-            System.out.println("listening.......");
+            //System.out.println("listening.......");
             try {
                 Socket accepted = serverSocket.accept();
                 Handler clientHandler = new Handler(accepted);
